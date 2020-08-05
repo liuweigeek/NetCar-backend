@@ -57,7 +57,7 @@ public class UserOperate {
         String userregion = (String) map.get("userregion");
         Integer usercarid = Integer.parseInt(map.get("usercarid").toString());
         String license = (String) map.get("license");
-        Integer vin = (Integer.parseInt(map.get("vin").toString()));
+        String vin = (String) map.get("vin");
         String enginenum = (String) map.get("enginenum");
 
         Session session = HibernateSessionFactory.getSessionFactory().openSession();

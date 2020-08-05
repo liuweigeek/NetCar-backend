@@ -30,7 +30,7 @@ public class UserCar {
     @Column(name = "enginenum")
     private String engineNum;  //汽车发动机号
     @Column(name = "vin")
-    private Integer vin;  //汽车车架号
+    private String vin;  //汽车车架号
     @Column(name = "mileage")
     private Integer mileage; //汽车里程数
     @Column(name = "lastmaintainmile")
@@ -92,11 +92,11 @@ public class UserCar {
         this.engineNum = engineNum;
     }
 
-    public Integer getVin() {
+    public String getVin() {
         return vin;
     }
 
-    public void setVin(Integer vin) {
+    public void setVin(String vin) {
         this.vin = vin;
     }
 

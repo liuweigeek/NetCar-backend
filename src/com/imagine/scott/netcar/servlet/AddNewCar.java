@@ -36,7 +36,7 @@ public class AddNewCar extends HttpServlet {
         String phone = request.getParameter("phone");
         int carid = Integer.parseInt(request.getParameter("usercarid"));
         userCar.setLicensePlateNumber(request.getParameter("license"));
-        userCar.setVin(Integer.parseInt(request.getParameter("vin")));
+        userCar.setVin(request.getParameter("vin"));
         userCar.setEngineNum(request.getParameter("enginenum"));
         UserCarOperate userCarOperate = new UserCarOperate();
         String resStr = "";
