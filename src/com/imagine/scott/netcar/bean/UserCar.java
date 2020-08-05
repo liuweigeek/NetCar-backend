@@ -15,21 +15,21 @@ import javax.persistence.Version;
 @Entity
 @Table(name = "tb_usercar")
 public class UserCar {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
-	@Version
-	private int version;
+    @Version
+    private int version;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
-	@JoinColumn(name = "car_id")
-	private Car car;	//车型
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "car_id")
+    private Car car;    //车型
     @Column(name = "license")
     private String licensePlateNumber;  //汽车车牌号
-	@Column(name = "enginenum")
+    @Column(name = "enginenum")
     private String engineNum;  //汽车发动机号
-	@Column(name = "vin")
+    @Column(name = "vin")
     private Integer vin;  //汽车车架号
     @Column(name = "mileage")
     private Integer mileage; //汽车里程数
@@ -48,100 +48,129 @@ public class UserCar {
     @Column(name = "tirepressure")
     private Boolean tirePressure;   //胎压
     @Column(name = "avgecon")
-    private Boolean airSacSafe;	//气囊安全状况
-    
+    private Boolean airSacSafe;    //气囊安全状况
+
     /********Getters and Setters********/
-    
+
     public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public int getVersion() {
-		return version;
-	}
-	public void setVersion(int version) {
-		this.version = version;
-	}
-	public Car getCar() {
-		return car;
-	}
-	public void setCar(Car car) {
-		this.car = car;
-	}
-	public String getLicensePlateNumber() {
-		return licensePlateNumber;
-	}
-	public void setLicensePlateNumber(String licensePlateNumber) {
-		this.licensePlateNumber = licensePlateNumber;
-	}
-	public String getEngineNum() {
-		return engineNum;
-	}
-	public void setEngineNum(String engineNum) {
-		this.engineNum = engineNum;
-	}
-	public Integer getVin() {
-		return vin;
-	}
-	public void setVin(Integer vin) {
-		this.vin = vin;
-	}
-	public Integer getMileage() {
-		return mileage;
-	}
-	public void setMileage(Integer mileage) {
-		this.mileage = mileage;
-	}
-	public Integer getLastMaintainMile() {
-		return lastMaintainMile;
-	}
-	public void setLastMaintainMile(Integer lastMaintainMile) {
-		this.lastMaintainMile = lastMaintainMile;
-	}
-	public Integer getAvgEcon() {
-		return avgEcon;
-	}
-	public void setAvgEcon(Integer avgEcon) {
-		this.avgEcon = avgEcon;
-	}
-	public Boolean getLampWell() {
-		return lampWell;
-	}
-	public void setLampWell(Boolean lampWell) {
-		this.lampWell = lampWell;
-	}
-	public Boolean getEngineWell() {
-		return engineWell;
-	}
-	public void setEngineWell(Boolean engineWell) {
-		this.engineWell = engineWell;
-	}
-	public Boolean getTransmissionWell() {
-		return transmissionWell;
-	}
-	public void setTransmissionWell(Boolean transmissionWell) {
-		this.transmissionWell = transmissionWell;
-	}
-	public Integer getOilMass() {
-		return oilMass;
-	}
-	public void setOilMass(Integer oilMass) {
-		this.oilMass = oilMass;
-	}
-	public Boolean getTirePressure() {
-		return tirePressure;
-	}
-	public void setTirePressure(Boolean tirePressure) {
-		this.tirePressure = tirePressure;
-	}
-	public Boolean getAirSacSafe() {
-		return airSacSafe;
-	}
-	public void setAirSacSafe(Boolean airSacSafe) {
-		this.airSacSafe = airSacSafe;
-	}
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public String getLicensePlateNumber() {
+        return licensePlateNumber;
+    }
+
+    public void setLicensePlateNumber(String licensePlateNumber) {
+        this.licensePlateNumber = licensePlateNumber;
+    }
+
+    public String getEngineNum() {
+        return engineNum;
+    }
+
+    public void setEngineNum(String engineNum) {
+        this.engineNum = engineNum;
+    }
+
+    public Integer getVin() {
+        return vin;
+    }
+
+    public void setVin(Integer vin) {
+        this.vin = vin;
+    }
+
+    public Integer getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(Integer mileage) {
+        this.mileage = mileage;
+    }
+
+    public Integer getLastMaintainMile() {
+        return lastMaintainMile;
+    }
+
+    public void setLastMaintainMile(Integer lastMaintainMile) {
+        this.lastMaintainMile = lastMaintainMile;
+    }
+
+    public Integer getAvgEcon() {
+        return avgEcon;
+    }
+
+    public void setAvgEcon(Integer avgEcon) {
+        this.avgEcon = avgEcon;
+    }
+
+    public Boolean getLampWell() {
+        return lampWell;
+    }
+
+    public void setLampWell(Boolean lampWell) {
+        this.lampWell = lampWell;
+    }
+
+    public Boolean getEngineWell() {
+        return engineWell;
+    }
+
+    public void setEngineWell(Boolean engineWell) {
+        this.engineWell = engineWell;
+    }
+
+    public Boolean getTransmissionWell() {
+        return transmissionWell;
+    }
+
+    public void setTransmissionWell(Boolean transmissionWell) {
+        this.transmissionWell = transmissionWell;
+    }
+
+    public Integer getOilMass() {
+        return oilMass;
+    }
+
+    public void setOilMass(Integer oilMass) {
+        this.oilMass = oilMass;
+    }
+
+    public Boolean getTirePressure() {
+        return tirePressure;
+    }
+
+    public void setTirePressure(Boolean tirePressure) {
+        this.tirePressure = tirePressure;
+    }
+
+    public Boolean getAirSacSafe() {
+        return airSacSafe;
+    }
+
+    public void setAirSacSafe(Boolean airSacSafe) {
+        this.airSacSafe = airSacSafe;
+    }
 
     /********Getters and Setters********/
 }

@@ -1,7 +1,5 @@
 package com.imagine.scott.netcar.bean;
 
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,89 +13,90 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
+import java.util.Date;
 
 @Entity
 @Table(name = "tb_notification")
 public class Notification {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
-	@Version
-	private int version;	//乐观锁
+    @Version
+    private int version;    //乐观锁
 
-	@Column(name = "title")
-	private String title;
-	
-	@Column(name = "text")
-	private String text;
-	
-	@Column(name = "haspush")
-	private Boolean haspush;
-	
-	@Column(name = "date")
-	@Temporal(value = TemporalType.TIMESTAMP)
-	private Date date;
-	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
-	@JoinColumn(name = "usercar")
-	private UserCar userCar;
+    @Column(name = "title")
+    private String title;
 
-	public Integer getId() {
-		return id;
-	}
+    @Column(name = "text")
+    private String text;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @Column(name = "haspush")
+    private Boolean haspush;
 
-	public int getVersion() {
-		return version;
-	}
+    @Column(name = "date")
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private Date date;
 
-	public void setVersion(int version) {
-		this.version = version;
-	}
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "usercar")
+    private UserCar userCar;
 
-	public String getTitle() {
-		return title;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public String getText() {
-		return text;
-	}
+    public int getVersion() {
+        return version;
+    }
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    public void setVersion(int version) {
+        this.version = version;
+    }
 
-	public Boolean getHaspush() {
-		return haspush;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setHaspush(Boolean haspush) {
-		this.haspush = haspush;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public Date getDate() {
-		return date;
-	}
+    public String getText() {
+        return text;
+    }
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
+    public void setText(String text) {
+        this.text = text;
+    }
 
-	public UserCar getUserCar() {
-		return userCar;
-	}
+    public Boolean getHaspush() {
+        return haspush;
+    }
 
-	public void setUserCar(UserCar userCar) {
-		this.userCar = userCar;
-	}
-	
+    public void setHaspush(Boolean haspush) {
+        this.haspush = haspush;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public UserCar getUserCar() {
+        return userCar;
+    }
+
+    public void setUserCar(UserCar userCar) {
+        this.userCar = userCar;
+    }
+
 }

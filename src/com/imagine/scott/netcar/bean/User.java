@@ -1,9 +1,5 @@
 package com.imagine.scott.netcar.bean;
 
-import java.util.Date;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,183 +15,186 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_user")
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	
-	@Version
-	private int version;
-	
-	@Column(name = "phone", unique = true)
-	private String phone;
-	@Column(name = "username")
-	private String username;	//用户名
-	@Column(name = "password")
-	private String password;	//密码
-	@Column(name = "sex")
-	private String sex;		//性别
-	@Column(name = "drivingyears")
-	private String drivingYears;	//驾龄
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @Version
+    private int version;
+
+    @Column(name = "phone", unique = true)
+    private String phone;
+    @Column(name = "username")
+    private String username;    //用户名
+    @Column(name = "password")
+    private String password;    //密码
+    @Column(name = "sex")
+    private String sex;        //性别
+    @Column(name = "drivingyears")
+    private String drivingYears;    //驾龄
     @Column(name = "region")
-	private String region;	//地区
-	@Column(name = "headimage")
-    private String headimage;	//头像存储路径
-	@Column(name = "background")
-	private String background;	//背景图片存储路径
-    
-	@OneToMany(fetch = FetchType.LAZY, targetEntity = UserCar.class,
-			cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH})
-	@JoinColumns(value = {@JoinColumn(name="user_id", referencedColumnName="id")})
-	@OrderBy(value="id desc")
-	private List<UserCar> userCars = new ArrayList<>();	//拥有的车辆列表
-	
-	@OneToMany(fetch = FetchType.LAZY, targetEntity = Order.class,
-			cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH})
-	@JoinColumns(value = {@JoinColumn(name="user_id", referencedColumnName="id")})
-	@OrderBy(value="id desc")
-    private List<Order> orders = new ArrayList<>();	//订单列表
-	
-	@OneToMany(fetch = FetchType.EAGER, targetEntity = Notification.class,
-			cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH})
-	@JoinColumns(value = {@JoinColumn(name="user_id", referencedColumnName="id")})
-	@OrderBy(value="id desc")
-    private List<Notification> notifications = new ArrayList<>();	//通知列表
-	
-	@Column(name = "registerdate")
-	@Temporal(value = TemporalType.TIMESTAMP)
-	private Date registerDate;	//帐号注册时间
-	
-	@Column(name = "modifydate")
-	@Temporal(value = TemporalType.TIMESTAMP)
-	private Date modifyDate;	//帐号信息修改时间
+    private String region;    //地区
+    @Column(name = "headimage")
+    private String headimage;    //头像存储路径
+    @Column(name = "background")
+    private String background;    //背景图片存储路径
 
-	/********Getters and Setters********/
-	
-	public Integer getId() {
-		return id;
-	}
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = UserCar.class,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumns(value = {@JoinColumn(name = "user_id", referencedColumnName = "id")})
+    @OrderBy(value = "id desc")
+    private List<UserCar> userCars = new ArrayList<>();    //拥有的车辆列表
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = Order.class,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumns(value = {@JoinColumn(name = "user_id", referencedColumnName = "id")})
+    @OrderBy(value = "id desc")
+    private List<Order> orders = new ArrayList<>();    //订单列表
 
-	public int getVersion() {
-		return version;
-	}
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = Notification.class,
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumns(value = {@JoinColumn(name = "user_id", referencedColumnName = "id")})
+    @OrderBy(value = "id desc")
+    private List<Notification> notifications = new ArrayList<>();    //通知列表
 
-	public void setVersion(int version) {
-		this.version = version;
-	}
+    @Column(name = "registerdate")
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private Date registerDate;    //帐号注册时间
 
-	public String getPhone() {
-		return phone;
-	}
+    @Column(name = "modifydate")
+    @Temporal(value = TemporalType.TIMESTAMP)
+    private Date modifyDate;    //帐号信息修改时间
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    /********Getters and Setters********/
 
-	public String getUsername() {
-		return username;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public int getVersion() {
+        return version;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setVersion(int version) {
+        this.version = version;
+    }
 
-	public String getSex() {
-		return sex;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public String getDrivingYears() {
-		return drivingYears;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public void setDrivingYears(String drivingYears) {
-		this.drivingYears = drivingYears;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public String getRegion() {
-		return region;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setRegion(String region) {
-		this.region = region;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getHeadimage() {
-		return headimage;
-	}
+    public String getSex() {
+        return sex;
+    }
 
-	public void setHeadimage(String headimage) {
-		this.headimage = headimage;
-	}
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
 
-	public String getBackground() {
-		return background;
-	}
+    public String getDrivingYears() {
+        return drivingYears;
+    }
 
-	public void setBackground(String background) {
-		this.background = background;
-	}
+    public void setDrivingYears(String drivingYears) {
+        this.drivingYears = drivingYears;
+    }
 
-	public List<UserCar> getUserCars() {
-		return userCars;
-	}
+    public String getRegion() {
+        return region;
+    }
 
-	public void setUserCars(List<UserCar> userCars) {
-		this.userCars = userCars;
-	}
+    public void setRegion(String region) {
+        this.region = region;
+    }
 
-	public List<Order> getOrders() {
-		return orders;
-	}
+    public String getHeadimage() {
+        return headimage;
+    }
 
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
-	}
+    public void setHeadimage(String headimage) {
+        this.headimage = headimage;
+    }
 
-	public List<Notification> getNotifications() {
-		return notifications;
-	}
+    public String getBackground() {
+        return background;
+    }
 
-	public void setNotifications(List<Notification> notifications) {
-		this.notifications = notifications;
-	}
+    public void setBackground(String background) {
+        this.background = background;
+    }
 
-	public Date getRegisterDate() {
-		return registerDate;
-	}
+    public List<UserCar> getUserCars() {
+        return userCars;
+    }
 
-	public void setRegisterDate(Date registerDate) {
-		this.registerDate = registerDate;
-	}
+    public void setUserCars(List<UserCar> userCars) {
+        this.userCars = userCars;
+    }
 
-	public Date getModifyDate() {
-		return modifyDate;
-	}
+    public List<Order> getOrders() {
+        return orders;
+    }
 
-	public void setModifyDate(Date modifyDate) {
-		this.modifyDate = modifyDate;
-	}
-	
-	/********Getters and Setters********/
-	
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public List<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
+    }
+
+    public Date getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
+    }
+
+    public Date getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
+    }
+
+    /********Getters and Setters********/
+
 }

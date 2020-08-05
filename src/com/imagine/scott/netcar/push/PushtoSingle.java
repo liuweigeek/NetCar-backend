@@ -9,20 +9,20 @@ import com.gexin.rp.sdk.template.NotificationTemplate;
 
 public class PushtoSingle {
 
-	private static String appId = "ElCnUzo5DKAm5LER66d4T6";
+    private static String appId = "ElCnUzo5DKAm5LER66d4T6";
     private static String appKey = "K453FjckoV72zigPaa0gM1";
     private static String masterSecret = "16XsiF3Pjv6jQ59B7XS5C2";
 
     private String host = "http://sdk.open.api.igexin.com/apiex.htm";
 
     private String CID = "";
-    
+
     public PushtoSingle(String CID) {
-    	this.CID = CID;
+        this.CID = CID;
     }
-    
+
     public void push(String title, String text) throws Exception {
-    	
+
         IGtPush push = new IGtPush(host, appKey, masterSecret);
         NotificationTemplate template = notificationTemplate(title, text);
         SingleMessage message = new SingleMessage();
@@ -31,13 +31,13 @@ public class PushtoSingle {
         message.setOfflineExpireTime(24 * 3600 * 1000);
         message.setData(template);
         // 可选，1为wifi，0为不限制网络环境。根据手机处于的网络情况，决定是否下发
-        message.setPushNetWorkType(0); 
+        message.setPushNetWorkType(0);
         Target target = new Target();
         target.setAppId(appId);
         target.setClientId(CID);
         //target.setAlias(Alias);
         IPushResult ret = null;
-       
+
         try {
             ret = push.pushMessageToSingle(message, target);
         } catch (RequestException e) {
@@ -50,9 +50,10 @@ public class PushtoSingle {
             System.out.println("服务器响应异常");
         }
     }
+
     public NotificationTemplate notificationTemplate(String title, String text) {
-    	
-    	NotificationTemplate template = new NotificationTemplate();
+
+        NotificationTemplate template = new NotificationTemplate();
         // 设置APPID与APPKEY
         template.setAppId(appId);
         template.setAppkey(appKey);

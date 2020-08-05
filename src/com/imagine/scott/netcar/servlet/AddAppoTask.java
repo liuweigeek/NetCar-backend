@@ -1,37 +1,37 @@
 package com.imagine.scott.netcar.servlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Calendar;
+import com.imagine.scott.netcar.Constants;
+import com.imagine.scott.netcar.bean.Order;
+import com.imagine.scott.netcar.operation.OrderOperate;
+import com.imagine.scott.netcar.trans.ObjectToJson;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.imagine.scott.netcar.Constants;
-import com.imagine.scott.netcar.bean.Order;
-import com.imagine.scott.netcar.operation.OrderOperate;
-import com.imagine.scott.netcar.trans.ObjectToJson;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Calendar;
 
 /**
  * Servlet implementation class AddAppoTask
  */
 @WebServlet("/AddAppoTask")
 public class AddAppoTask extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     public AddAppoTask() {
         super();
     }
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-				
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         String phone = (String) request.getParameter("phone");
         Order order = new Order();
         Calendar c = Calendar.getInstance();
@@ -48,15 +48,15 @@ public class AddAppoTask extends HttpServlet {
         String resStr = new String();
         Order mOrder = orderOperate.addOrder(phone, order);
         if (mOrder != null) {
-        	System.out.println(Integer.toString(mOrder.getId()));
-        	resStr = ObjectToJson.transOrder(Constants.ADD_ORDER_SUCCESS, mOrder);
+            System.out.println(Integer.toString(mOrder.getId()));
+            resStr = ObjectToJson.transOrder(Constants.ADD_ORDER_SUCCESS, mOrder);
         } else {
-			resStr = ObjectToJson.returnCode(Constants.ADD_ORDER_FAILED);
-		}
+            resStr = ObjectToJson.returnCode(Constants.ADD_ORDER_FAILED);
+        }
         PrintWriter out = response.getWriter();
-		out.print(resStr);
-		out.flush();
-		out.close();
-	}
+        out.print(resStr);
+        out.flush();
+        out.close();
+    }
 
 }
