@@ -1,0 +1,17 @@
+#MyEclipse Hibernate Properties
+#Thu Mar 02 11:00:49 CST 2017
+genVersionTag=false
+sessionFactoryName=com.imagine.scott.netcar.hibernate.util.HibernateSessionFactory
+genAnnotations=false
+configFile=/NetCar/src/hibernate1.cfg.xml
+reStrategyClass=
+sessionFactoryId=
+profile=
+detectM2M=false
+genBasicCompId=false
+keyGenerator=
+createConfigFile=true
+basePersistenceClass=
+detectO2O=false
+useJavaTypes=true
+reSettingsFile=
